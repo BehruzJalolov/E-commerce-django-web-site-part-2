@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Ro'yxatdan o'tish — MultiShop{% endblock %}
+
+{% block content %}
+    <div class="container-fluid py-5">
+        <div class="row justify-content-center px-xl-5">
+            <div class="col-lg-5 col-md-8">
+                <div class="bg-light p-5">
+                    <h2 class="mb-4">Ro'yxatdan o'tish</h2>
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                    {% endif %}
+
+                    <form method="post" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.help_text %}
+                                    <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <div class="text-danger small">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary btn-block py-2">Ro'yxatdan o'tish</button>
+                    </form>
+
+                    <p class="mt-4 mb-0 text-center">
+                        Hisobingiz bormi?
+                        <a href="{% url 'login' %}">Kirish</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

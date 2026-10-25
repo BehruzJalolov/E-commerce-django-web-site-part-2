@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Buyurtma qabul qilindi — MultiShop{% endblock %}
+
+{% block content %}
+    <div class="container-fluid py-5">
+        <div class="row px-xl-5 justify-content-center">
+            <div class="col-lg-8">
+                <div class="bg-light p-5 text-center mb-5">
+                    <h1 class="text-success mb-3"><i class="fa fa-check-circle"></i></h1>
+                    <h2>Buyurtmangiz qabul qilindi!</h2>
+                    <p class="text-muted mb-1">Buyurtma raqami: <strong>#{{ order.short_id }}</strong></p>
+                    <p class="text-muted">Operator tez orada siz bilan bog'lanadi.</p>
+                </div>
+
+                <div class="bg-light p-30 mb-5">
+                    <h5 class="mb-4">Buyurtma tafsilotlari</h5>
+                    <div class="table-responsive">
+                        <table class="table table-borderless mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Mahsulot</th>
+                                    <th class="text-center">Miqdor</th>
+                                    <th class="text-right">Narx</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in order.items.all %}
+                                    <tr>
+                                        <td>{{ item.product_name }}</td>
+                                        <td class="text-center">{{ item.quantity }}</td>
+                                        <td class="text-right">{{ item.total_price|floatformat:"0" }} so'm</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="2" class="text-right">Jami</th>
+                                    <th class="text-right">{{ order.total|floatformat:"0" }} so'm</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6>Yetkazib berish</h6>
+                            <p class="mb-0">{{ order.full_name }}</p>
+                            <p class="mb-0">{{ order.phone }}</p>
+                            <p class="mb-0">{{ order.address }}{% if order.city %}, {{ order.city }}{% endif %}</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>To'lov</h6>
+                            <p class="mb-0">{{ order.get_payment_method_display }}</p>
+                            <p class="mb-0">Holat: {{ order.get_status_display }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="{% url 'product_list' %}" class="btn btn-primary">Xaridni davom ettirish</a>
+                    <a href="{% url 'home' %}" class="btn btn-outline-secondary">Bosh sahifa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

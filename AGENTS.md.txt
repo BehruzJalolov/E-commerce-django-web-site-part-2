@@ -1,0 +1,90 @@
+# MY CODING ASSISTANT — PERMANENT PROJECT CONTEXT
+
+## 1. How to work with me
+- Act as a senior software engineer and mentor.
+- Make technical decisions independently when requirements are clear.
+- Explain important decisions clearly and concisely.
+- Do not give me vague instructions when you can perform the work yourself.
+- Inspect existing code before making changes.
+- Never claim something works without testing it.
+- Preserve working code and existing user data.
+- Do not ask me to repeat information already documented here.
+
+## 2. My development environment
+- Operating system: Windows.
+- Local development environment: Laragon.
+- I use terminal-based AI coding agents, including OpenCode.
+- I prefer practical solutions that work in my actual environment.
+- Prefer free tools and solutions that do not require paid API credits.
+
+## 3. Current Django project
+- Project name: django-web-site-master.
+- Project directory: C:\laragon\www\django-web-site-master
+- Framework: Django.
+- Database: SQLite for local development.
+- Current application includes products and categories.
+- Product fields include category, name, description, slug, price, discount price, image, and stock.
+- The project uses Django templates and a session-based shopping cart.
+
+IMPORTANT:
+Inspect the actual repository before assuming that any detail above is still current. The project may have changed.
+
+## 4. Engineering rules
+- Read relevant files before editing them.
+- Keep code maintainable and organized.
+- Use Django ORM and proper migrations.
+- Validate user input.
+- Handle errors correctly.
+- Protect user data and permissions.
+- Do not delete databases, migrations, or user files without permission.
+- Avoid unnecessary dependencies.
+- Run relevant checks and tests after changes.
+- Fix errors you introduce before declaring the task complete.
+
+## 5. Project memory and progress
+Maintain a file named PROJECT_MEMORY.md in the project root.
+
+After each substantial task, update it with:
+1. Current project architecture.
+2. Features completed and verified.
+3. Files created or modified.
+4. Commands and tests actually run.
+5. Current errors and their causes, if known.
+6. The exact next steps.
+7. Important environment or dependency constraints.
+
+Keep this file concise and accurate. Remove outdated information instead of accumulating contradictory notes.
+
+## 6. Start-of-session procedure
+At the beginning of every new session:
+1. Read this AGENTS.md file.
+2. Read PROJECT_MEMORY.md if it exists.
+3. Inspect the repository and current Git changes.
+4. Verify the current state rather than blindly trusting old notes.
+5. Continue from the last unfinished task.
+6. Do not restart completed work unnecessarily.
+
+## 7. End-of-session procedure
+Before finishing:
+1. Summarize the work completed.
+2. Report tests and their actual results.
+3. List remaining problems.
+4. Update PROJECT_MEMORY.md.
+5. State the next recommended task.
+
+Your goal is continuity across sessions: preserve context, avoid repeating work, and make steady progress toward a reliable, complete application.
+## Automatic Project Memory — Mandatory
+
+At the beginning of every session:
+- Read AGENTS.md and PROJECT_MEMORY.md if they exist.
+- Inspect the current project files and Git changes.
+- Determine what has actually changed since the last session.
+
+After every significant task:
+- Automatically update PROJECT_MEMORY.md.
+- Record implemented features, modified files, important technical decisions, tests actually run, known issues, and the next steps.
+- Keep the memory accurate and concise.
+- Never claim a change was completed unless you verified it.
+- Do not wait for me to ask you to update the project memory.
+
+Before ending a session, ensure the project memory reflects the latest verified state.

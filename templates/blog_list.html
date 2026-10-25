@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog — MultiShop{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="{% url 'home' %}">Bosh sahifa</a>
+                    <span class="breadcrumb-item active">Blog</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pb-5">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Blog</span></h2>
+        <div class="row px-xl-5">
+            {% for post in posts %}
+                <div class="col-lg-4 col-md-6 pb-1">
+                    <article class="bg-light p-4 mb-4 h-100">
+                        <h4><a class="text-dark text-decoration-none" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                        <small class="text-muted">{{ post.created_at|date:"d.m.Y H:i" }}</small>
+                        <p class="mt-3 mb-3">{{ post.excerpt }}</p>
+                        <a href="{{ post.get_absolute_url }}" class="btn btn-sm btn-primary">Batafsil</a>
+                    </article>
+                </div>
+            {% empty %}
+                <div class="col-12 pb-4">
+                    <div class="bg-light p-5 text-center">
+                        <h4>Hozircha maqolalar yo'q</h4>
+                        <p class="text-muted mb-0">Tez orada yangi maqolalar qo'shiladi.</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if page_obj.paginator.num_pages > 1 %}
+            <nav aria-label="Sahifalar">
+                <ul class="pagination justify-content-center mb-5">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="{% querystring page=page_obj.previous_page_number %}">Oldingi</a></li>
+                    {% endif %}
+                    {% for page_number in page_obj.paginator.page_range %}
+                        {% if page_number == page_obj.number %}
+                            <li class="page-item active"><span class="page-link">{{ page_number }}</span></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="{% querystring page=page_number %}">{{ page_number }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="{% querystring page=page_obj.next_page_number %}">Keyingi</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
+{% endblock %}

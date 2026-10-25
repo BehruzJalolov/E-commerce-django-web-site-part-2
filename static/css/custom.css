@@ -1,0 +1,98 @@
+/* Responsive fixes for MultiShop */
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+.topbar-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 0.35rem;
+}
+
+/* Keep the product cards tidy on small screens */
+.product-img img {
+    height: 280px;
+    object-fit: cover;
+}
+
+@media (min-width: 992px) {
+    .topbar-actions {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-vertical {
+        position: static !important;
+        width: 100% !important;
+    }
+
+    .hero-carousel .carousel-item {
+        height: 340px !important;
+    }
+
+    .hero-carousel .carousel-caption {
+        padding: 1rem;
+    }
+
+    .hero-carousel .carousel-caption h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-carousel .carousel-caption p {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .product-offer {
+        height: 240px !important;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-carousel .carousel-item {
+        height: 290px !important;
+    }
+
+    .hero-carousel .carousel-caption h1 {
+        font-size: 1.65rem;
+    }
+
+    .hero-carousel .carousel-caption p {
+        font-size: 0.85rem;
+    }
+
+    .hero-carousel .carousel-caption .btn {
+        padding: 0.4rem 0.9rem;
+    }
+
+    .topbar-actions .btn {
+        font-size: 0.75rem;
+    }
+
+    .product-img img {
+        height: 220px;
+    }
+
+    .product-offer {
+        height: 210px !important;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .table-responsive {
+        font-size: 0.85rem;
+    }
+}

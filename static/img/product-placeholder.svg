@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" role="img" aria-label="Rasm mavjud emas">
+  <rect width="600" height="600" fill="#e9ecef"/>
+  <rect x="180" y="210" width="240" height="180" rx="16" fill="#ced4da"/>
+  <circle cx="250" cy="270" r="28" fill="#adb5bd"/>
+  <path d="M200 370l80-90 60 65 40-45 70 70z" fill="#adb5bd"/>
+  <text x="300" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#6c757d">Rasm mavjud emas</text>
+</svg>

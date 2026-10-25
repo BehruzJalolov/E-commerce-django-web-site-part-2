@@ -1,0 +1,48 @@
+{% load static %}
+<div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+    <div class="product-item bg-light mb-4">
+        <div class="product-img position-relative overflow-hidden">
+            <a href="{{ product.get_absolute_url }}">
+                {% if product.image %}
+                    <img class="img-fluid w-100" src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                    <img class="img-fluid w-100" src="{% static 'img/product-placeholder.svg' %}" alt="{{ product.name }}">
+                {% endif %}
+            </a>
+            <div class="product-action">
+                {% if product.is_in_stock %}
+                    <form method="post" action="{% url 'add_to_cart' product.id %}" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-dark btn-square" title="Savatga qo'shish">
+                            <i class="fa fa-shopping-cart"></i>
+                        </button>
+                    </form>
+                {% else %}
+                    <button type="button" class="btn btn-outline-secondary btn-square" disabled title="Omborda yo'q">
+                        <i class="fa fa-shopping-cart"></i>
+                    </button>
+                {% endif %}
+                <a class="btn btn-outline-dark btn-square" href="{{ product.get_absolute_url }}" title="Batafsil">
+                    <i class="fa fa-search"></i>
+                </a>
+            </div>
+        </div>
+        <div class="text-center py-4">
+            <a class="h6 text-decoration-none text-truncate d-block" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+            <div class="d-flex align-items-center justify-content-center mt-2">
+                <h5>{{ product.final_price|floatformat:"0" }} so'm</h5>
+                {% if product.has_discount %}
+                    <h6 class="text-muted ml-2"><del>{{ product.price|floatformat:"0" }}</del></h6>
+                {% endif %}
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-1">
+                {% if product.is_in_stock %}
+                    <small class="text-success"><i class="fa fa-check mr-1"></i>Omborda: {{ product.stock }}</small>
+                {% else %}
+                    <small class="text-danger"><i class="fa fa-times mr-1"></i>Omborda yo'q</small>
+                {% endif %}
+            </div>
+            <small class="text-muted">{{ product.category.name }}</small>
+        </div>
+    </div>
+</div>
